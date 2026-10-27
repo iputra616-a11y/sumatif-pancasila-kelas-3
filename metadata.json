@@ -1,6 +1,6 @@
 {
   "name": "Tes Sumatif Pancasila",
-  "description": "Aplikasi Tes Sumatif SD Negeri 3 Loloan Timur dengan 4 tahap tes, sinkronisasi Google Spreadsheet, unduh PDF naskah \u0026 hasil tes, serta panel guru.",
+  "description": "Aplikasi Tes Sumatif Pendidikan Pancasila Kelas III materi Aturan di Rumah, Sekolah, dan Masyarakat dengan sinkronisasi Google Spreadsheet, unduh PDF naskah & hasil tes, serta panel guru.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

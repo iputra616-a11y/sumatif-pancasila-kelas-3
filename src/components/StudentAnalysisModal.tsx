@@ -131,7 +131,7 @@ export const StudentAnalysisModal: React.FC<StudentAnalysisModalProps> = ({
             <div className="flex items-center justify-between">
               <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-blue-600" />
-                Matriks Respon 30 Butir Soal
+                Matriks Respon {questions.length} Butir Soal
               </h4>
               <div className="flex items-center gap-3 text-[11px]">
                 <span className="flex items-center gap-1 font-medium text-slate-600">

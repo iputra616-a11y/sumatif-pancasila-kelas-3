@@ -30,11 +30,11 @@ export interface StatementItem {
 
 export type CognitiveLevel = 'L1' | 'L2' | 'L3';
 export type KurikulumElemen =
-  | 'Bilangan'
-  | 'Aljabar'
-  | 'Pengukuran'
-  | 'Geometri'
-  | 'Analisis Data dan Peluang';
+  | 'Pancasila'
+  | 'Undang-Undang Dasar Negara Republik Indonesia Tahun 1945'
+  | 'Bhinneka Tunggal Ika'
+  | 'Negara Kesatuan Republik Indonesia'
+  | 'Norma dan Aturan';
 
 export interface Question {
   id: number;

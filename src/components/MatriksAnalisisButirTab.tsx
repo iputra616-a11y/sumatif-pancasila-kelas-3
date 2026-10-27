@@ -127,7 +127,7 @@ export const MatriksAnalisisButirTab: React.FC<MatriksAnalisisButirTabProps> = (
               Analisis Butir Soal per Siswa
             </h2>
             <p className="text-xs sm:text-sm text-blue-100 max-w-2xl leading-relaxed">
-              Matriks pemetaan skor jawaban siswa butir per butir (S1 s.d. S30) dengan visualisasi
+              Matriks pemetaan skor jawaban siswa butir per butir (S1 s.d. S{questions.length}) dengan visualisasi
               status jawaban, ketercapaian daya serap empiris, serta diagnosis kelemahan materi tiap
               siswa.
             </p>

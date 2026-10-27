@@ -269,7 +269,10 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
             score: 1,
             maxScore: 1,
             status: 'benar',
-            userAnswerText: 'Semua Benar',
+            userAnswerText:
+              statements.length === 1
+                ? (statements[0].correctAnswer ? 'Benar' : 'Salah')
+                : 'Semua Benar',
           };
         } else if (statementsCorrect > 0) {
           // Memberi bobot proporsional untuk nilai akhir
@@ -290,7 +293,12 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
             score: 0,
             maxScore: 1,
             status: 'salah',
-            userAnswerText: 'Salah Semua',
+            userAnswerText:
+              statements.length === 1
+                ? (userMap[statements[0]?.id] !== undefined
+                    ? userMap[statements[0]?.id] ? 'Benar' : 'Salah'
+                    : 'Kosong')
+                : 'Salah Semua',
           };
         }
       }
@@ -534,9 +542,11 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                         className="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-slate-50/60"
                       >
                         <p className="text-xs sm:text-sm text-slate-800 font-medium mb-3">
-                          <span className="font-bold text-blue-700 mr-1.5">
-                            {sIdx + 1}.
-                          </span>
+                          {currentQ.statements && currentQ.statements.length > 1 && (
+                            <span className="font-bold text-blue-700 mr-1.5">
+                              {sIdx + 1}.
+                            </span>
+                          )}
                           {st.text}
                         </p>
                         <div className="flex items-center gap-3">
@@ -615,7 +625,7 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
           <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 flex items-center justify-between">
               <span>Nomor Soal Ujian</span>
-              <span className="text-[11px] font-normal text-slate-500">22 Butir</span>
+              <span className="text-[11px] font-normal text-slate-500">{totalQuestions} Butir</span>
             </h4>
 
             {/* Grid 22 Soal */}

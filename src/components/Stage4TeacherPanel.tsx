@@ -974,17 +974,17 @@ export const Stage4TeacherPanel: React.FC<Stage4TeacherPanelProps> = ({
                   onClick={() => {
                     if (
                       confirm(
-                        'Kembalikan seluruh bank soal ke 30 butir standar (18 PG, 3 PGK, 9 PGK Kategori)?'
+                        'Kembalikan seluruh bank soal ke 40 butir standar (30 PG & 10 Benar/Salah)?'
                       )
                     ) {
                       onResetDefaultQuestions();
                     }
                   }}
                   className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors border border-slate-300 cursor-pointer"
-                  title="Reset seluruh soal ke 30 butir standar Kurikulum Merdeka"
+                  title="Reset seluruh soal ke 40 butir standar Kurikulum Merdeka"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Reset ke 30 Soal Standar</span>
+                  <span>Reset ke 40 Soal Standar</span>
                 </button>
               )}
               <button

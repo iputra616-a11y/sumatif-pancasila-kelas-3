@@ -210,10 +210,10 @@ export function downloadStudentResultPDF(result: ExamResult): void {
   doc.text('Mengetahui,', colLeft, ttdY);
   doc.text('Orang Tua / Wali Siswa,', colLeft, ttdY + 5);
 
-  // Kolom Kanan: Guru Kelas VI
+  // Kolom Kanan: Guru Kelas
   const tglFormatted = formatIndonesianDate();
   doc.text(`Jembrana, ${tglFormatted}`, colRight, ttdY);
-  doc.text('Guru Mata Pelajaran / Kelas VI,', colRight, ttdY + 5);
+  doc.text(`Guru Mata Pelajaran / Kelas ${CONFIG.KELAS},`, colRight, ttdY + 5);
 
   // Area tanda tangan (spasi vertikal)
   const lineY = ttdY + 27;
@@ -262,7 +262,7 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     doc.setFontSize(8);
     doc.setTextColor(120, 120, 120);
     doc.text(
-      `${CONFIG.SEKOLAH} | Naskah Soal Tes Sumatif Matematika Kelas VI`,
+      `${CONFIG.SEKOLAH} | Naskah Soal Tes Sumatif ${CONFIG.MATA_PELAJARAN} Kelas ${CONFIG.KELAS}`,
       pageWidth / 2,
       9,
       { align: 'center' }
@@ -351,8 +351,9 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     if (q.statements && q.statements.length > 0) {
       q.statements.forEach((st, sIdx) => {
         checkPageBreak(10);
+        const prefix = q.statements && q.statements.length > 1 ? `Pernyataan ${sIdx + 1}: ` : '';
         const stLines = doc.splitTextToSize(
-          `Pernyataan ${sIdx + 1}: ${st.text}   [  ] Benar   [  ] Salah`,
+          `${prefix}${st.text}   [  ] Benar   [  ] Salah`,
           pageWidth - 36
         );
         doc.text(stLines, 20, y);
@@ -362,7 +363,8 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     }
   });
 
-  doc.save(`Naskah_Soal_Matematika_Kelas_VI_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+  const safeMapel = CONFIG.MATA_PELAJARAN.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`Naskah_Soal_${safeMapel}_Kelas_${CONFIG.KELAS}_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
 }
 
 /**
@@ -648,7 +650,8 @@ export function downloadResultsRecapPDF(results: ExamResult[]): void {
     });
   }
 
-  doc.save(`Rekap_Nilai_Tes_Sumatif_Matematika_Kelas_${CONFIG.KELAS}.pdf`);
+  const safeMapel = CONFIG.MATA_PELAJARAN.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`Rekap_Nilai_Tes_Sumatif_${safeMapel}_Kelas_${CONFIG.KELAS}.pdf`);
 }
 
 /**
@@ -701,7 +704,7 @@ export function downloadKisiKisiPDF(questions: Question[]): void {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.text(
-    `Kurikulum Merdeka • Mata Pelajaran: ${CONFIG.MATA_PELAJARAN} • Fase C / Kelas ${CONFIG.KELAS} • Tahun Ajaran 2026/2027`,
+    `Kurikulum Merdeka • Mata Pelajaran: ${CONFIG.MATA_PELAJARAN} • Fase B / Kelas ${CONFIG.KELAS} • Tahun Ajaran 2026/2027`,
     pageWidth / 2,
     y,
     { align: 'center' }
@@ -902,7 +905,8 @@ export function downloadKisiKisiPDF(questions: Question[]): void {
     });
   }
 
-  doc.save(`Kisi_Kisi_Soal_Matematika_Kelas_${CONFIG.KELAS}.pdf`);
+  const safeMapel = CONFIG.MATA_PELAJARAN.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`Kisi_Kisi_${safeMapel}_Kelas_${CONFIG.KELAS}.pdf`);
 }
 
 /**
@@ -1223,6 +1227,7 @@ export function downloadAnalisisButirPDF(results: ExamResult[], questions: Quest
     });
   }
 
-  doc.save(`Analisis_Butir_Soal_Matematika_Kelas_${CONFIG.KELAS}.pdf`);
+  const safeMapel = CONFIG.MATA_PELAJARAN.replace(/[^a-zA-Z0-9]/g, '_');
+  doc.save(`Analisis_Butir_Soal_${safeMapel}_Kelas_${CONFIG.KELAS}.pdf`);
 }
 
